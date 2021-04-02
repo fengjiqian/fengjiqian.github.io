@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+
+
+<style>
+    /* div,
+    button {
+
+
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        position: absolute;
+
+
+        background-image: linear-gradient(45deg, #ed6ea1c0, #f7186a94);
+        box-shadow: 0px 15px 40px rgba(212, 42, 87, 0.63),
+        0px -15px 40px rgba(212, 42, 87, 0.63),
+        15px 0px 40px rgba(212, 42, 87, 0.63),
+        -15px 0px 40px rgba(212, 42, 87, 0.63); 
+    } */
+
+
+
+
+
+    #f1 {
+
+
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        border: 1px solid rgba(212, 42, 87, 0.288);
+
+
+        background-image: radial-gradient(#ff0000a9, #b83e3ec9);
+        filter: drop-shadow(0 0 0.75rem rgb(255, 0, 0));
+        /* box-shadow: 0px 50px 9px rgba(212, 42, 87, 0.63),
+        0px -50px 9px rgba(212, 42, 87, 0.63),
+        50px 0px 9px rgba(212, 42, 87, 0.63),
+        -50px 0px 9px rgba(212, 42, 87, 0.63);  */
+    }
+
+    #f3 {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: 400px;
+        left: 400px;
+        border: 1px solid rgba(212, 42, 87, 0.288);
+        
+
+
+        background-image: radial-gradient(#ff0000a9, #b83e3ec9);
+        /* box-shadow: 0px 15px 40px #b83e3ec9,
+            0px -15px 40px #b83e3ec9,
+            15px 0px 40px #b83e3ec9,
+            -15px 0px 40px #b83e3ec9; */
+    }
+
+
+    #f4 {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: 600px;
+        left: 600px;
+        border: 1px solid rgba(212, 42, 87, 0.288);
+        
+
+
+        background-color: #ff0000a9;
+        /* box-shadow: 0px 15px 40px #b83e3ec9,
+            0px -15px 40px #b83e3ec9,
+            15px 0px 40px #b83e3ec9,
+            -15px 0px 40px #b83e3ec9; */
+    }
+
+
+
+    #f2 {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: 200px;
+        left: 200px;
+        border: 6px solid rgba(212, 42, 87, 0.596);
+
+
+        background-image: radial-gradient(#ff0000a9, #e63f3ff1);
+        box-shadow: 0px 15px 40px #b83e3ec9,
+            0px -15px 40px #b83e3ec9,
+            15px 0px 40px #b83e3ec9,
+            -15px 0px 40px #b83e3ec9;
+    }
+
+
+
+
+
+
+
+
+    body {
+
+
+        background: rgb(32, 32, 32);
+
+    }
+</style>
+
+
+
+
+
+<body>
+
+
+
+
+
+    <div id="f1"></div>
+    <div id="f2"></div>
+    <div id="f3"></div>
+    <div id="f4"></div>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+    //获取元素
+    var f = document.getElementById('f1');
+    var x = 0;
+    var y = 0;
+    var l = 0;
+    var t = 0;
+    var isDown = false;
+    //鼠标按下事件
+    f.onmousedown = function (e) {
+        //获取x坐标和y坐标
+        x = e.clientX;
+        y = e.clientY;
+
+        //获取左部和顶部的偏移量
+        l = f.offsetLeft;
+        t = f.offsetTop;
+        //开关打开
+        isDown = true;
+        //设置样式  
+        f.style.cursor = 'move';
+    }
+    //鼠标移动
+    window.onmousemove = function (e) {
+        if (isDown == false) {
+            return;
+        }
+        //获取x和y
+        var nx = e.clientX;
+        var ny = e.clientY;
+        //计算移动后的左偏移量和顶部的偏移量
+        var nl = nx - (x - l);
+        var nt = ny - (y - t);
+
+        f.style.left = nl + 'px';
+        f.style.top = nt + 'px';
+    }
+    //鼠标抬起事件
+    f.onmouseup = function () {
+        //开关关闭
+        isDown = false;
+        f.style.cursor = 'default';
+    }
+
+
+
+
+
+
+</script>
+
+</html>
