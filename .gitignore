@@ -1,0 +1,9 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/fengjiqian.github.io/v17
+/.vs/fengjiqian.github.io/FileContentIndex
+/.vs/fengjiqian.github.io/config
