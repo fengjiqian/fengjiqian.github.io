@@ -26,9 +26,7 @@
 </style>
 
 <body>
-	<div id="f1"
-		style="height: 30px; width: 30px; position: absolute; z-index: 99; left: 120px; top: 120px; background-color:rgb(219, 85, 163);">
-	</div>
+	<div id="f1" style="height: 30px; width: 30px; position: absolute; z-index: 99; left: 120px; top: 120px; background-color:rgb(219, 85, 163);"></div>
 	<br>
 	<div style="color: rgb(240, 248, 255); font: 1em 新宋体;">&nbsp;Hello,</div>
 </body>
@@ -41,7 +39,6 @@
 	var l = 0;
 	var t = 0;
 	var isDown = false;
-
 	dv.onmousedown = function (e) {
 		//获取鼠标初始x坐标和y坐标
 		x = e.clientX;
@@ -73,8 +70,18 @@
 	}
 
 
+
+
+
+
+
+
+
+
+
+
 	let keyStateSet = new Set();
-	let intervalID;
+
 	document.onkeydown = function (evt) {
 		evt.preventDefault();
 		console.info("onkeydown");
@@ -87,25 +94,39 @@
 		keyStateSet.delete(evt.keyCode);
 	}
 
+	let intervalID;
 	document.addEventListener("keyStateChange", function (e) {
 		if (keyStateSet.size == 0) clearInterval(intervalID);
 		intervalID = setInterval(function () {
 			if (keyStateSet.has(37))
-				dv.style.left = Number.parseInt(dv.style.left.substr(0, dv.style.left.length - 2)) - 6 + "px";
+				if (Number.parseInt(dv.style.left.substr(0, dv.style.left.length - 2)) > 0)
+					dv.style.left = Number.parseInt(dv.style.left.substr(0, dv.style.left.length - 2)) - 6 + "px";
 			if (keyStateSet.has(38))
-				dv.style.top = Number.parseInt(dv.style.top.substr(0, dv.style.top.length - 2)) - 6 + "px";
+				if (Number.parseInt(dv.style.top.substr(0, dv.style.top.length - 2)) > 0)
+					dv.style.top = Number.parseInt(dv.style.top.substr(0, dv.style.top.length - 2)) - 6 + "px";
 			if (keyStateSet.has(39))
 				dv.style.left = Number.parseInt(dv.style.left.substr(0, dv.style.left.length - 2)) + 6 + "px";
 			if (keyStateSet.has(40))
 				dv.style.top = Number.parseInt(dv.style.top.substr(0, dv.style.top.length - 2)) + 6 + "px";
+
+			// if (keyStateSet.has(112))
+			// // window.scroll({ top: 0, left: 100, behavior: 'smooth' });
+			// // window.scrollBy(0, 10);
+			// window.scrollBy({
+			// 	top: 10,
+			// 	left: 0,
+			// 	behavior: "instant"
+			// });
+
+			dv.scrollIntoView();
 		}, 10);
 	});
 
 
+	// 冗余
 	function sleep(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms))
 	}
-
 
 </script>
 
