@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>WebSocketTest</h1>
+    <input id="sendTxt" type="text">
+    <button id="sendBtn">发送</button>
+    <p id="recv"></p>
+</body>
+
+<script type="text/javascript">
+    var websocket = new WebSocket("ws://[fd74:ae1:e1ad:8500:3135:15e9:8088:89ac]:80/ws");
+    // 引入websocket
+    websocket.onopen = function () {
+        console.log('websocket open');
+        document.getElementById("recv").innerHTML = "Connected";
+    }
+    // 结束websocket
+    websocket.onclose = function () {
+        console.log('websocket close');
+    }
+    // 接受到信息
+    websocket.onmessage = function (e) {
+        console.log(e.data);
+        document.getElementById("recv").innerHTML = e.data;
+    }
+
+    // 点击发送webscoket
+    document.getElementById("sendBtn").addEventListener("click", function () {
+        var txt = document.getElementById("sendTxt").value;
+        websocket.send(txt);
+    })
+</script>
+
+</html>
